@@ -27,8 +27,7 @@ public class BinarySearch implements Search {
 			return firstMatches(n) ? beginIndex : NOT_FOUND_VALUE;
 		}
 		if (inFirstHalf(n)) {
-			int lastIndexOfFirstHalf = calculateEndOfFirstHalf();
-			return new BinarySearch(A, beginIndex, lastIndexOfFirstHalf).find(n);
+			return new BinarySearch(A, beginIndex, calculateEndOfFirstHalf()).find(n);
 		}
 		if (inSecondHalf(n)) {
 			return new BinarySearch(A, firstIndexOfSecondHalf, endIndex).find(n);
