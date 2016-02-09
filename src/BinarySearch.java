@@ -38,7 +38,7 @@ public class BinarySearch implements Search {
 		if (isEven(a)) {
 			return a/2;
 		}
-		return 1 + beginIndex;
+		return 1 + beginIndex + a/2;
 	}
 
 	private boolean isEven(int endIndex) {
