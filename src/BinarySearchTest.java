@@ -7,9 +7,9 @@ public class BinarySearchTest {
 	public void find_firstMatches_returnsIndexZero() {
 		// given
 		int[] A = new int[]{1};
-		Search sort = new BinarySearch(A);
+		Search search = new BinarySearch(A);
 		// when
-		int index = sort.find(1);
+		int index = search.find(1);
 		//then
 		assertEquals(0, index);
 	}
@@ -19,9 +19,9 @@ public class BinarySearchTest {
 		// given
 		int notFoundValue = -1;
 		int[] A = new int[]{1};
-		Search sort = new BinarySearch(A);
+		Search search = new BinarySearch(A);
 		// when
-		int index = sort.find(2);
+		int index = search.find(2);
 		//then
 		assertEquals(notFoundValue, index);
 	}
@@ -31,9 +31,9 @@ public class BinarySearchTest {
 		// given
 		int secondIndex = 1;
 		int[] A = new int[]{1,2};
-		Search sort = new BinarySearch(A);
+		Search search = new BinarySearch(A);
 		// when
-		int index = sort.find(2);
+		int index = search.find(2);
 		//then
 		assertEquals(secondIndex, index);
 	}
@@ -43,10 +43,34 @@ public class BinarySearchTest {
 		// given
 		int firstIndex = 0;
 		int[] A = new int[]{1,2};
-		Search sort = new BinarySearch(A);
+		Search search = new BinarySearch(A);
 		// when
-		int index = sort.find(1);
+		int index = search.find(1);
 		//then
 		assertEquals(firstIndex, index);
 	}
+
+	@Test
+	public void calculateBeginningOfSecondHalf_threeElementArrayAndBeginningInMiddle_returnsMiddleBeginning() {
+		// given
+		int middleBeginning = 1;
+		int[] A = new int[]{1,2,3};
+		BinarySearch search = new BinarySearch(A, 1, 2);
+		// when
+		int index = search.calculateBeginningOfSecondHalf();
+		//then
+		assertEquals(middleBeginning, index);
+	}
+	
+//	@Test
+//	public void find_threeValuesAndMiddleMatches_returnsMiddleIndex() {
+//		// given
+//		int middleIndex = 1;
+//		int[] A = new int[]{1,2,3};
+//		Search search = new BinarySearch(A);
+//		// when
+//		int index = search.find(2);
+//		//then
+//		assertEquals(middleIndex, index);
+//	}
 }

@@ -9,15 +9,11 @@ public class BinarySearch implements Search {
 		this(A, 0, arrayLastIndex(A));
 	}
 
-	private BinarySearch(int[] A, int beginIndex, int endIndex) {
+	BinarySearch(int[] A, int beginIndex, int endIndex) {
 		this.beginIndex = beginIndex;
 		this.endIndex = endIndex;
-		this.firstIndexOfSecondHalf = calculateBeginningOfSecondHalf(endIndex);
+		this.firstIndexOfSecondHalf = calculateBeginningOfSecondHalf();
 		this.A = A;
-	}
-
-	private int calculateBeginningOfSecondHalf(int endIndex) {
-		return 1; //TODO simplification
 	}
 
 	@Override
@@ -27,12 +23,26 @@ public class BinarySearch implements Search {
 			return firstMatches(n) ? beginIndex : NOT_FOUND_VALUE;
 		}
 		if (inFirstHalf(n)) {
+			System.out.println("in first half");
 			return new BinarySearch(A, beginIndex, calculateEndOfFirstHalf()).find(n);
 		}
 		if (inSecondHalf(n)) {
+			System.out.println("in second half");
 			return new BinarySearch(A, firstIndexOfSecondHalf, endIndex).find(n);
 		}
 		return NOT_FOUND_VALUE;
+	}
+
+	int calculateBeginningOfSecondHalf() {
+		int a = endIndex - beginIndex;
+		if (isEven(a)) {
+			return a/2;
+		}
+		return 1; //TODO simplification
+	}
+
+	private boolean isEven(int endIndex) {
+		return (endIndex % 2) == 0;
 	}
 
 	private int calculateEndOfFirstHalf() {
