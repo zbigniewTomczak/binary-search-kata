@@ -27,13 +27,17 @@ public class BinarySearch implements Search {
 			return firstMatches(n) ? beginIndex : NOT_FOUND_VALUE;
 		}
 		if (inFirstHalf(n)) {
-			int lastIndexOfFirstHalf = firstIndexOfSecondHalf - 1;
+			int lastIndexOfFirstHalf = calculateEndOfFirstHalf();
 			return new BinarySearch(A, beginIndex, lastIndexOfFirstHalf).find(n);
 		}
 		if (inSecondHalf(n)) {
 			return new BinarySearch(A, firstIndexOfSecondHalf, endIndex).find(n);
 		}
 		return NOT_FOUND_VALUE;
+	}
+
+	private int calculateEndOfFirstHalf() {
+		return firstIndexOfSecondHalf - 1;
 	}
 
 	private boolean inFirstHalf(int n) {
