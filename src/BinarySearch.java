@@ -36,7 +36,7 @@ public class BinarySearch implements Search {
 	int calculateBeginningOfSecondHalf() {
 		int a = endIndex - beginIndex;
 		if (isEven(a)) {
-			return a/2;
+			return a/2 + beginIndex;
 		}
 		return 1 + beginIndex + a/2;
 	}

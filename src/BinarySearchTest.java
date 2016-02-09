@@ -86,15 +86,39 @@ public class BinarySearchTest {
 		assertEquals(endBeginning, index);
 	}
 
-//	@Test
-//	public void find_fiveValuesAndLastMatches_returnsLastIndex() {
-//		// given
-//		int lastIndex = 4;
-//		int[] A = new int[]{1,2,3,4,5};
-//		Search search = new BinarySearch(A);
-//		// when
-//		int index = search.find(5);
-//		//then
-//		assertEquals(lastIndex, index);
-//	}
+	@Test
+	public void find_fiveValuesAndLastMatches_returnsLastIndex() {
+		// given
+		int lastIndex = 4;
+		int[] A = new int[]{1,2,3,4,5};
+		Search search = new BinarySearch(A);
+		// when
+		int index = search.find(5);
+		//then
+		assertEquals(lastIndex, index);
+	}
+
+	@Test
+	public void find_fiveValuesAndLastButOneMatches_returnsLastButOneIndex() {
+		// given
+		int lastButOneIndex = 2;
+		int[] A = new int[]{1,2,3,4,5};
+		Search search = new BinarySearch(A);
+		// when
+		int index = search.find(3);
+		//then
+		assertEquals(lastButOneIndex, index);
+	}
+
+	@Test
+	public void calculateBeginningOfSecondHalf_fiveElementArrayAndEvenLength_returnsCorrectBeginning() {
+		// given
+		int beginning = 4;
+		int[] A = new int[]{1,2,3,4,5};
+		BinarySearch search = new BinarySearch(A, 3, 5);
+		// when
+		int index = search.calculateBeginningOfSecondHalf();
+		//then
+		assertEquals(beginning, index);
+	}
 }
