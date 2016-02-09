@@ -61,6 +61,18 @@ public class BinarySearchTest {
 		//then
 		assertEquals(middleBeginning, index);
 	}
+
+	@Test
+	public void calculateBeginningOfSecondHalf_threeElementArrayAndBeginningAtEnd_returnsEnd() {
+		// given
+		int end = 2;
+		int[] A = new int[]{1,2,3};
+		BinarySearch search = new BinarySearch(A, 2, 2);
+		// when
+		int index = search.calculateBeginningOfSecondHalf();
+		//then
+		assertEquals(end, index);
+	}
 	
 //	@Test
 //	public void find_threeValuesAndMiddleMatches_returnsMiddleIndex() {
