@@ -18,7 +18,6 @@ public class BinarySearch implements Search {
 
 	@Override
 	public int find(int n) {
-		System.out.println(beginIndex +", "+ endIndex +", "+ firstIndexOfSecondHalf);
 		if (isSizeOne()) {
 			return firstMatches(n) ? beginIndex : NOT_FOUND_VALUE;
 		}

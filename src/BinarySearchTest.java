@@ -121,4 +121,18 @@ public class BinarySearchTest {
 		//then
 		assertEquals(beginning, index);
 	}
+
+	@Test
+	public void find_bigDataset_returnsCorrectIndexes() {
+		// given
+		int[] A = new int[]{1,2,3,4,5,7,13,14,17,54,67,890,999,5554,123444};
+		Search search = new BinarySearch(A);
+
+		for (int i = 0; i < A.length; i++) {
+			// when
+			int index = search.find(A[i]);
+			//then
+			assertEquals(i, index);
+		}
+	}
 }
