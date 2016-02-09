@@ -3,7 +3,7 @@ public class BinarySearch implements Search {
 	private final int endIndex;
 	private final int[] A;
 	public static final int NOT_FOUND_VALUE = -1;
-	private int middle;
+	private int middleIndex;
 
 	public BinarySearch(int[] A) {
 		this(A, 0, A.length - 1);
@@ -12,7 +12,7 @@ public class BinarySearch implements Search {
 	private BinarySearch(int[] A, int beginIndex, int endIndex) {
 		this.beginIndex = beginIndex;
 		this.endIndex = endIndex;
-		this.middle = calculateMiddle(endIndex);
+		this.middleIndex = calculateMiddle(endIndex);
 		this.A = A;
 	}
 
@@ -22,19 +22,25 @@ public class BinarySearch implements Search {
 
 	@Override
 	public int find(int n) {
-		System.out.println(beginIndex +", "+ endIndex +", "+ middle);
+		System.out.println(beginIndex +", "+ endIndex +", "+ middleIndex);
 		if (isSizeOne()) {
 			return firstMatches(n) ? beginIndex : NOT_FOUND_VALUE;
 		}
-
+		if (inFirstHalf(n)) {
+			return new BinarySearch(A, beginIndex, middleIndex - 1).find(n);
+		}
 		if (inSecondHalf(n)) {
-			return new BinarySearch(A, middle, endIndex).find(n);
+			return new BinarySearch(A, middleIndex, endIndex).find(n);
 		}
 		return NOT_FOUND_VALUE;
 	}
 
+	private boolean inFirstHalf(int n) {
+		return n < A[middleIndex];
+	}
+
 	private boolean inSecondHalf(int n) {
-		return true; //TODO simplification
+		return !inFirstHalf(n);
 	}
 
 	private boolean firstMatches(int n) {

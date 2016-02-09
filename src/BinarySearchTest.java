@@ -38,5 +38,15 @@ public class BinarySearchTest {
 		assertEquals(secondIndex, index);
 	}
 
-
+	@Test
+	public void find_twoValuesAndFirstMatches_returnsFirstIndex() {
+		// given
+		int firstIndex = 0;
+		int[] A = new int[]{1,2};
+		Search sort = new BinarySearch(A);
+		// when
+		int index = sort.find(1);
+		//then
+		assertEquals(firstIndex, index);
+	}
 }
