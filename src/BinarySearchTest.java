@@ -53,7 +53,7 @@ public class BinarySearchTest {
 	@Test
 	public void calculateBeginningOfSecondHalf_threeElementArrayAndBeginningInMiddle_returnsMiddleBeginning() {
 		// given
-		int middleBeginning = 1;
+		int middleBeginning = 2;
 		int[] A = new int[]{1,2,3};
 		BinarySearch search = new BinarySearch(A, 1, 2);
 		// when
@@ -61,28 +61,16 @@ public class BinarySearchTest {
 		//then
 		assertEquals(middleBeginning, index);
 	}
-
-	@Test
-	public void calculateBeginningOfSecondHalf_threeElementArrayAndBeginningAtEnd_returnsEnd() {
-		// given
-		int end = 2;
-		int[] A = new int[]{1,2,3};
-		BinarySearch search = new BinarySearch(A, 2, 2);
-		// when
-		int index = search.calculateBeginningOfSecondHalf();
-		//then
-		assertEquals(end, index);
-	}
 	
-//	@Test
-//	public void find_threeValuesAndMiddleMatches_returnsMiddleIndex() {
-//		// given
-//		int middleIndex = 1;
-//		int[] A = new int[]{1,2,3};
-//		Search search = new BinarySearch(A);
-//		// when
-//		int index = search.find(2);
-//		//then
-//		assertEquals(middleIndex, index);
-//	}
+	@Test
+	public void find_threeValuesAndMiddleMatches_returnsMiddleIndex() {
+		// given
+		int middleIndex = 1;
+		int[] A = new int[]{1,2,3};
+		Search search = new BinarySearch(A);
+		// when
+		int index = search.find(2);
+		//then
+		assertEquals(middleIndex, index);
+	}
 }
