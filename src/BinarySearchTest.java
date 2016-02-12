@@ -135,4 +135,36 @@ public class BinarySearchTest {
 			assertEquals(i, index);
 		}
 	}
+
+	@Test
+	public void calculateBeginningOfSecondHalf_veryBigIndexes_returnCorrectHalf() {
+		// Some implementation uses (m+n)/2 and are vulnerable to overflow errors;
+		// given
+		int beginning = Integer.MAX_VALUE-1;
+		int end = beginning+1;
+		int[] A = new int[]{};
+		BinarySearch search = new BinarySearch(A, beginning, end);
+		// when
+		int index = search.calculateBeginningOfSecondHalf();
+		//then
+		assertEquals(end, index);
+	}
+
+	@Test
+	public void find_extremelyLargeDataset_returnsCorrectIndexes() {
+		int oneMillion = 1000000;
+		// given
+		int[] A = new int[oneMillion];
+		for (int i = 0; i < A.length; i++) {
+			A[i] = i;
+		}
+		Search search = new BinarySearch(A);
+
+		for (int i = 0; i < A.length; i++) {
+			// when
+			int index = search.find(A[i]);
+			//then
+			assertEquals(i, index);
+		}
+	}
 }

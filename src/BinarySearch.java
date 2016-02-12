@@ -22,11 +22,11 @@ public class BinarySearch implements Search {
 			return firstMatches(n) ? beginIndex : NOT_FOUND_VALUE;
 		}
 		if (inFirstHalf(n)) {
-			System.out.println("in first half");
+			//TODO protect against stack overflow
 			return new BinarySearch(A, beginIndex, calculateEndOfFirstHalf()).find(n);
 		}
 		if (inSecondHalf(n)) {
-			System.out.println("in second half");
+			//TODO protect against stack overflow
 			return new BinarySearch(A, firstIndexOfSecondHalf, endIndex).find(n);
 		}
 		return NOT_FOUND_VALUE;
@@ -38,6 +38,7 @@ public class BinarySearch implements Search {
 			return a/2 + beginIndex;
 		}
 		return 1 + beginIndex + a/2;
+//		return 1 + (beginIndex + endIndex)/2; // would produce overflow for two big integers
 	}
 
 	private boolean isEven(int endIndex) {
